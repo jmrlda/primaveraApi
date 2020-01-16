@@ -5,13 +5,14 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{41510BCB-61EF-49A1-A3B4-49439908F649}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>primaveraApi</RootNamespace>
     <AssemblyName>primaveraApi</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,81 +33,41 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Interop.AdmBE900">
-      <HintPath>..\..\..\..\..\..\primavera\SG900\Apl\Interop.AdmBE900.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Interop.AdmBS900">
-      <HintPath>..\..\..\..\..\..\primavera\SG900\Apl\Interop.AdmBS900.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Interop.BasBE900">
-      <HintPath>..\..\..\..\..\..\primavera\SG900\Apl\Interop.BasBE900.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Interop.CblBE900">
-      <HintPath>..\..\..\..\..\..\primavera\SG900\Apl\Interop.CblBE900.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Interop.EapBE900">
-      <HintPath>..\..\..\..\..\..\primavera\SG900\Apl\Interop.EapBE900.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Interop.ErpBS900">
-      <HintPath>..\..\..\..\..\..\primavera\SG900\Apl\Interop.ErpBS900.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Interop.FacBE900">
-      <HintPath>..\..\..\..\..\..\primavera\SG900\Apl\Interop.FacBE900.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Interop.GcpBE900">
-      <HintPath>..\..\..\..\..\..\primavera\SG900\Apl\Interop.GcpBE900.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Interop.IBasBS900">
-      <HintPath>..\..\..\..\..\..\primavera\SG900\Apl\Interop.IBasBS900.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Interop.ICblBS900">
-      <HintPath>..\..\..\..\..\..\primavera\SG900\Apl\Interop.ICblBS900.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Interop.IEapBS900">
-      <HintPath>..\..\..\..\..\..\primavera\SG900\Apl\Interop.IEapBS900.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Interop.IFacBS900">
-      <HintPath>..\..\..\..\..\..\primavera\SG900\Apl\Interop.IFacBS900.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Interop.IGcpBS900">
-      <HintPath>..\..\..\..\..\..\primavera\SG900\Apl\Interop.IGcpBS900.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Interop.IRhpBS900">
-      <HintPath>..\..\..\..\..\..\primavera\SG900\Apl\Interop.IRhpBS900.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Interop.RhpBE900">
-      <HintPath>..\..\..\..\..\..\primavera\SG900\Apl\Interop.RhpBE900.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Interop.StdBE900">
-      <HintPath>..\..\..\..\..\..\primavera\SG900\Apl\Interop.StdBE900.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Interop.StdPlatBE900">
-      <HintPath>..\..\..\..\..\..\primavera\SG900\Apl\Interop.StdPlatBE900.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Interop.StdPlatBS900">
-      <HintPath>..\..\..\..\..\..\primavera\SG900\Apl\Interop.StdPlatBS900.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
+    <Reference Include="Json.Net, Version=1.0.18.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Json.Net.1.0.18\lib\netstandard2.0\Json.Net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Json, Version=2.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Json.4.7.0\lib\netstandard2.0\System.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -115,11 +76,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Basedados.cs" />
+    <Compile Include="crud\EncomendaCrud.cs" />
+    <Compile Include="crud\UsuarioCrud.cs" />
+    <Compile Include="crud\ClienteCrud.cs" />
+    <Compile Include="crud\ArtigoCrud.cs" />
+    <Compile Include="load\Init.cs" />
+    <Compile Include="modelo\Artigo.cs" />
+    <Compile Include="modelo\Cliente.cs" />
+    <Compile Include="modelo\Encomenda.cs" />
+    <Compile Include="modelo\usuario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

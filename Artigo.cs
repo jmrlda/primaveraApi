@@ -14,7 +14,7 @@ public class Artigo
 	{
 	}
 
-    public Artigo(String artigo, String descricao, int quantidade, , String unidade, double preco, double civa, double iva)
+    public Artigo(String artigo, String descricao, int quantidade,  String unidade, double preco, double civa, double iva)
     {
         this.artigo = artigo;
         this.descricao = descricao;

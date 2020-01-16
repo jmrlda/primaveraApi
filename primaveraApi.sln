@@ -5,27 +5,22 @@ VisualStudioVersion = 16.0.29424.173
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "primaveraApi", "primaveraApi\primaveraApi.csproj", "{41510BCB-61EF-49A1-A3B4-49439908F649}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{37111B29-33C5-463D-97B8-8BD2EE88F831}"
-	ProjectSection(SolutionItems) = preProject
-		priBasedados.cs = priBasedados.cs
-		priEngine.cs = priEngine.cs
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "modelo", "modelo", "{4D8A1A35-09B1-47F6-8B3D-F63C53663544}"
-	ProjectSection(SolutionItems) = preProject
-		Artigo.cs = Artigo.cs
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{41510BCB-61EF-49A1-A3B4-49439908F649}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{41510BCB-61EF-49A1-A3B4-49439908F649}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41510BCB-61EF-49A1-A3B4-49439908F649}.Debug|x86.ActiveCfg = Debug|x86
+		{41510BCB-61EF-49A1-A3B4-49439908F649}.Debug|x86.Build.0 = Debug|x86
 		{41510BCB-61EF-49A1-A3B4-49439908F649}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41510BCB-61EF-49A1-A3B4-49439908F649}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41510BCB-61EF-49A1-A3B4-49439908F649}.Release|x86.ActiveCfg = Release|x86
+		{41510BCB-61EF-49A1-A3B4-49439908F649}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
