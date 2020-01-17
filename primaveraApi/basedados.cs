@@ -119,6 +119,40 @@ namespace primaveraApi
 
         }
 
+        public String ExecuteScalar(String sql)
+        {
+            String rv = null;
+            try
+            {
+
+                using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+
+                     
+                        rv =  command.ExecuteScalar().ToString();
+                        Console.WriteLine("scalar");
+                        Console.WriteLine(rv);
+                    }
+                    connection.Close();
+
+                }
+            }
+            catch (SqlException e)
+            {
+                Console.Error.WriteLine("[ExecuteNonQuery] Erro:");
+                Console.Error.WriteLine(e);
+                rv = null;
+            }
+
+
+
+            return rv == null ? null : rv;
+
+        }
+
 
 
     }

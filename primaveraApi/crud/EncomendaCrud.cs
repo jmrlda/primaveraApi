@@ -42,6 +42,13 @@ namespace primaveraApi.crud
 
         }
 
+        public bool create(Encomenda encomenda)
+        {
+            insertEncomenda(encomenda);
+            return false;
+        }
+
+
         public List<Encomenda> read()
         {
             resultado = this.bd.GetObjecto(this.sql_select, 22);
@@ -53,7 +60,7 @@ namespace primaveraApi.crud
             foreach (object[] obj in resultado)
             {
                 vendedor = new Usuario(obj[2].ToString(), obj[8].ToString(), obj[9].ToString(), obj[10].ToString(), obj[11].ToString());
-                cliente = new Cliente(obj[12].ToString(), obj[13].ToString(), obj[14].ToString(), obj[15].ToString());
+                cliente = new Cliente(obj[1].ToString(), obj[12].ToString(), obj[13].ToString(), obj[14].ToString());
                 
                 encomenda = new Encomenda(obj[0].ToString(), cliente, vendedor, new List<Artigo>() , double.Parse(obj[3].ToString()), obj[4].ToString(), obj[5].ToString());
                 artigo = new Artigo(obj[15].ToString(), obj[16].ToString(), double.Parse(obj[17].ToString()), obj[19].ToString(), double.Parse(obj[18].ToString()), double.Parse(obj[21].ToString()), double.Parse(obj[21].ToString()));
@@ -76,6 +83,106 @@ namespace primaveraApi.crud
 
             return encomenda_lista;
         }
+
+
+
+
+        public void update(Encomenda encomenda)
+        {
+            bool rv = false;
+            String sql = "use PRIPRITERRA; UPDATE TDU_primobEncomenda set CDU_cliente = '" + encomenda.cliente.cliente + "', CDU_vendedor = '" + encomenda.vendedor.usuario + "', CDU_valor = '" + encomenda.valorTotal.ToString().Replace(',', '.')  +
+                "', CDU_documento = '" + encomenda.vendedor.documento + "' , CDU_estado = '" + encomenda.estado  + "' where CDU_encomenda = '" + encomenda.encomenda + "'";
+            rv = this.bd.ExecuteNonQuery(sql);
+            if (rv != false)
+            {
+                foreach (Artigo artigo in encomenda.artigos)
+                {
+                    insertItemEncomenda(encomenda.encomenda, artigo);
+
+                }
+                Console.WriteLine("actualizado encomenda sucesso");
+            }
+
+        }
+
+
+        public void delete(Encomenda encomenda)
+        {
+            if (deleteItemEncomenda(encomenda) == true )
+            {
+                Console.WriteLine("itens removidos");
+
+                if (deleteEncomenda(encomenda) == true )
+                {
+                    Console.WriteLine("Encomenda removido");
+                }
+            }
+        }
+
+
+
+
+        void insertEncomenda(Encomenda encomenda)
+        {
+            bool rv = false;
+            String sql_encomenda = "use PRIPRITERRA; insert into  TDU_primobEncomenda (CDU_cliente, CDU_vendedor, CDU_valor, CDU_documento, CDU_estado) " +
+                         "VALUES ('" + encomenda.cliente.cliente + "', '" + encomenda.vendedor.usuario + "', '" + encomenda.valorTotal.ToString().Replace(',','.') + "', '" + encomenda.vendedor.documento + "', 'pendente') ";
+
+            rv = this.bd.ExecuteNonQuery(sql_encomenda);
+            if (rv != false)
+            {
+                String encomenda_id = ultima_encomenda();
+                foreach (Artigo artigo in encomenda.artigos)
+                {
+                    insertItemEncomenda(encomenda_id, artigo);
+
+                }
+                Console.WriteLine("inserido encomenda sucesso");
+            } else
+            {
+                Console.WriteLine("inserido encomenda erro");
+
+            }
+        }
+        bool insertItemEncomenda(String encomenda, Artigo artigo)
+        {
+            bool rv = false;
+            String sql_encomenda = "use PRIPRITERRA; insert into TDU_primobItemEncomenda ( CDU_encomenda, CDU_artigo," +
+                        " CDU_valor_unit, CDU_quantidade, CDU_valor_total) " +
+                         "VALUES ('" + encomenda + "', '" + artigo.artigo + "', '" +
+                         artigo.preco.ToString().Replace(',', '.') + "', '" + artigo.quantidade.ToString().Replace(',', '.') + "', '" +
+                         (artigo.quantidade * artigo.preco).ToString().Replace(',', '.') + "') ";
+
+            rv = this.bd.ExecuteNonQuery(sql_encomenda);
+            if (rv == true)
+            {
+                Console.WriteLine("inserido item encomenda sucesso");
+            }
+            return rv;
+        }
+
+        bool deleteEncomenda(Encomenda encomenda)
+        {
+
+            bool rv;
+            String sql = "use PRIPRITERRA;";
+            sql += "delete from TDU_primobEncomenda where CDU_encomenda = '" + encomenda.encomenda + "'";
+            rv = this.bd.ExecuteNonQuery(sql);
+
+            return rv;
+        }
+
+
+        bool deleteItemEncomenda(Encomenda encomenda)
+        {
+
+            bool rv;
+            String sql = "use PRIPRITERRA;";
+            sql += "delete from TDU_primobItemEncomenda where CDU_encomenda = '" + encomenda.encomenda + "'";
+            rv = this.bd.ExecuteNonQuery(sql);
+            return rv;
+        }
+
 
         bool existe_encomenda(Encomenda encomenda)
         {
@@ -109,8 +216,24 @@ namespace primaveraApi.crud
 
             return false;
         }
+
+
+        String ultima_encomenda()
+        {
+
+            string rv = null;
+            string sql = "use PRIPRITERRA; SELECT TOP(1) CDU_encomenda FROM TDU_primobEncomenda ORDER BY 1 DESC";
+            resultado = this.bd.GetObjecto(sql, 1);
+            if ( resultado.Count > 0)
+            {
+                rv = resultado[0][0].ToString();
+            }
+
+            return rv;
+        }
+
     }
 
 
-        
+
 }

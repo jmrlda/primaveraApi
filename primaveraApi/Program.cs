@@ -48,8 +48,18 @@ namespace primaveraApi
 
             EncomendaCRUD encomendaCrud = new EncomendaCRUD();
             List<Encomenda> lista_encomenda =  encomendaCrud.read();
+            if (lista_encomenda.Count > 0)
+            {
+                Encomenda encomenda = lista_encomenda[0];
+                encomenda.cliente.cliente = "ABO001";
+                encomenda.cliente.endereco = "Matola";
+                encomenda.cliente.nome = "Aboubakar Ntakirutimana";
+                encomenda.cliente.numContrib = "135463191";
 
 
+
+           //     encomendaCrud.delete(encomenda);
+            }
             Console.ReadKey(true);
 
 
