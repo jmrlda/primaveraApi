@@ -15,12 +15,13 @@ namespace primaveraApi
         static void Main(string[] args)
         {
 
-            //ArtigoCRUD artigoCrud = new ArtigoCRUD();
+            ArtigoCRUD artigoCrud = new ArtigoCRUD();
+            artigoCrud.read();
             //ClienteCRUD clienteCrud = new ClienteCRUD();
             //UsuarioCRUD usuarioCrud = new UsuarioCRUD();
-            Init.TabelaUtilizador();
-            Init.TabelaEncomenda();
-            Init.TabelaItemEncomenda();
+            //Init.TabelaUtilizador();
+            //Init.TabelaEncomenda();
+            //Init.TabelaItemEncomenda();
 
             Usuario usuario = new Usuario("", "guirruta", "12345", "vd1", "vendedor");
             UsuarioCRUD usuarioCRUD = new UsuarioCRUD();
@@ -46,21 +47,21 @@ namespace primaveraApi
             //    Console.WriteLine("Erro de login");
             //}
 
-            EncomendaCRUD encomendaCrud = new EncomendaCRUD();
-            List<Encomenda> lista_encomenda =  encomendaCrud.read();
-            if (lista_encomenda.Count > 0)
-            {
-                Encomenda encomenda = lista_encomenda[0];
-                encomenda.cliente.cliente = "ABO001";
-                encomenda.cliente.endereco = "Matola";
-                encomenda.cliente.nome = "Aboubakar Ntakirutimana";
-                encomenda.cliente.numContrib = "135463191";
+           // EncomendaCRUD encomendaCrud = new EncomendaCRUD();
+           // List<Encomenda> lista_encomenda =  encomendaCrud.read();
+           // if (lista_encomenda.Count > 0)
+           // {
+           //     Encomenda encomenda = lista_encomenda[0];
+           //     encomenda.cliente.cliente = "ABO001";
+           //     encomenda.cliente.endereco = "Matola";
+           //     encomenda.cliente.nome = "Aboubakar Ntakirutimana";
+           //     encomenda.cliente.numContrib = "135463191";
 
 
 
-           //     encomendaCrud.delete(encomenda);
-            }
-            Console.ReadKey(true);
+           ////     encomendaCrud.delete(encomenda);
+           // }
+           // Console.ReadKey(true);
 
 
         

@@ -8,7 +8,7 @@ namespace primaveraApi.crud
     public class ArtigoCRUD
     {
         Basedados bd;
-        String[] colunas = new String[]{"artigo", "descricao", "STKActual", "unidadeVenda", "PCMedio", "iva", "iva"};
+        String[] colunas = new String[]{"a.artigo", "a.descricao", "a.STKActual", "a.unidadeVenda", "am.PVP1", "a.iva", "a.iva"};
         List<object[]> resultado = new List<object[]>();
         Artigo artigo = new Artigo();
         List<Artigo> artigo_lista = new List<Artigo>();
@@ -17,7 +17,7 @@ namespace primaveraApi.crud
         public ArtigoCRUD()
         {
              this.bd = new Basedados();
-            sql_select = "use PRIPRITERRA; SELECT " + string.Join(",", colunas) + " FROM artigo;";
+            sql_select = "use PRIPRITERRA; SELECT " + string.Join(",", colunas) + " FROM Artigo a, ArtigoMoeda am where a.STKActual > 0.0 and a.artigo = am.Artigo and am.Moeda = 'MT';";
         }
 
         public List<Artigo> read()
