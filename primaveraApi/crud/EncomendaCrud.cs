@@ -34,7 +34,8 @@ namespace primaveraApi.crud
             sql_select += " util.CDU_nome, util.CDU_senha, util.CDU_documento, util.CDU_perfil,";
             sql_select += " cli.nome, cli.NumContrib, cli.Fac_Mor,  ";
             sql_select += " encItem.CDU_artigo,a.descricao, ";
-            sql_select += " a.stkActual as quantidade, am.pvp1 as preco_unitario,a.unidadeVenda, mr.descricao as marca,   a.Iva ";
+            sql_select += " a.stkActual as quantidade, am.pvp1 as preco_unitario,a.unidadeVenda, mr.descricao as marca,   a.Iva,  ";
+            sql_select += "am.PVP1IvaIncluido, am.PVP2, am.PVP2IvaIncluido, am.PVP3, am.PVP3IvaIncluido, am.PVP4, am.PVP4IvaIncluido, am.PVP5, am.PVP5IvaIncluido, am.PVP6, am.PVP6IvaIncluido ";
             sql_select += " from TDU_primobEncomenda as enc, TDU_primobItemEncomenda encItem, TDU_primobUtilizador util, Artigo a, artigoMoeda am, Marcas mr, Clientes cli ";
             sql_select += " where enc.CDU_encomenda = encItem.CDU_encomenda and encItem.CDU_artigo = a.Artigo and ";
             sql_select += " enc.CDU_vendedor = util.CDU_utilizador and enc.CDU_cliente = cli.Cliente and ";
@@ -63,7 +64,16 @@ namespace primaveraApi.crud
                 cliente = new Cliente(obj[1].ToString(), obj[12].ToString(), obj[13].ToString(), obj[14].ToString());
                 
                 encomenda = new Encomenda(obj[0].ToString(), cliente, vendedor, new List<Artigo>() , double.Parse(obj[3].ToString()), obj[4].ToString(), obj[5].ToString());
-                artigo = new Artigo(obj[15].ToString(), obj[16].ToString(), double.Parse(obj[17].ToString()), obj[19].ToString(), double.Parse(obj[18].ToString()), double.Parse(obj[21].ToString()), double.Parse(obj[21].ToString()));
+                artigo = new Artigo(obj[15].ToString(), obj[16].ToString(), double.Parse(obj[17].ToString()), obj[19].ToString(), double.Parse(obj[18].ToString()), double.Parse(obj[21].ToString()), double.Parse(obj[21].ToString()),
+                    double.Parse(obj[18].ToString()), int.Parse(obj[22].ToString()) > 0 ? true : false,
+                    double.Parse(obj[23].ToString()), int.Parse(obj[24].ToString()) > 0 ? true : false,
+                    double.Parse(obj[25].ToString()), int.Parse(obj[26].ToString()) > 0 ? true : false,
+                    double.Parse(obj[27].ToString()), int.Parse(obj[28].ToString()) > 0 ? true : false,
+                    double.Parse(obj[29].ToString()), int.Parse(obj[30].ToString()) > 0 ? true : false,
+                    double.Parse(obj[31].ToString()), int.Parse(obj[32].ToString()) > 0 ? true : false
+
+
+                    );
                 if (!existe_encomenda(encomenda))
                 {
                     encomenda_lista.Add(encomenda);
