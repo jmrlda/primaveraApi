@@ -44,16 +44,16 @@ namespace primaveraApi.modelo
             this.iva = iva;
             this.pvp1 = pvp1;
             this.pvp1Iva = pvp1Iva;
-            this.pvp2 = pvp1;
-            this.pvp2Iva = pvp1Iva;
-            this.pvp3 = pvp1;
-            this.pvp3Iva = pvp1Iva;
-            this.pvp4 = pvp1;
-            this.pvp4Iva = pvp1Iva;
-            this.pvp5 = pvp1;
-            this.pvp5Iva = pvp1Iva;
-            this.pvp6 = pvp1;
-            this.pvp6Iva = pvp1Iva;
+            this.pvp2 = pvp2;
+            this.pvp2Iva = pvp2Iva;
+            this.pvp3 = pvp3;
+            this.pvp3Iva = pvp3Iva;
+            this.pvp4 = pvp4;
+            this.pvp4Iva = pvp4Iva;
+            this.pvp5 = pvp5;
+            this.pvp5Iva = pvp5Iva;
+            this.pvp6 = pvp6;
+            this.pvp6Iva = pvp6Iva;
 
 
         }
