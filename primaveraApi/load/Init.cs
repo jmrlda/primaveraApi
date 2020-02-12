@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace primaveraApi.load
 {
-    class Init
+    public class Init
     {
 
         public static void TabelaUtilizador()

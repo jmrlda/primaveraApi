@@ -37,11 +37,9 @@ namespace primaveraApi
             try
             {             
                 // Connect to SQL
-                Console.Write("Connecting to SQL Server ... ");
                 using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
                 {
                     connection.Open();
-                    Console.WriteLine("Done.");
                     estado = true;
                 }
             }
@@ -133,8 +131,6 @@ namespace primaveraApi
 
                      
                         rv =  command.ExecuteScalar().ToString();
-                        Console.WriteLine("scalar");
-                        Console.WriteLine(rv);
                     }
                     connection.Close();
 
@@ -142,7 +138,7 @@ namespace primaveraApi
             }
             catch (SqlException e)
             {
-                Console.Error.WriteLine("[ExecuteNonQuery] Erro:");
+                Console.Error.WriteLine("[ExecuteScalar] Erro:");
                 Console.Error.WriteLine(e);
                 rv = null;
             }

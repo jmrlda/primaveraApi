@@ -45,8 +45,7 @@ namespace primaveraApi.crud
 
         public bool create(Encomenda encomenda)
         {
-            insertEncomenda(encomenda);
-            return false;
+            return insertEncomenda(encomenda);
         }
 
 
@@ -80,13 +79,6 @@ namespace primaveraApi.crud
                 }
                 addArtigo(encomenda, artigo);
 
-
-
-                //encomenda = new Encomenda(obj[0].ToString(), obj[1].ToString(), obj[2].ToString(), obj[3].ToString(), obj[4].ToString(),
-                //    obj[5].ToString, obj[6]);d
-
-                //encomenda_lista.Add(encomenda);
-                Console.WriteLine(obj);
             }
 
 
@@ -100,7 +92,8 @@ namespace primaveraApi.crud
         public void update(Encomenda encomenda)
         {
             bool rv = false;
-            String sql = "use PRIPRITERRA; UPDATE TDU_primobEncomenda set CDU_cliente = '" + encomenda.cliente.cliente + "', CDU_vendedor = '" + encomenda.vendedor.usuario + "', CDU_valor = '" + encomenda.valorTotal.ToString().Replace(',', '.')  +
+            //CDU_vendedor = '" + encomenda.vendedor.usuario + "',
+            String sql = "use PRIPRITERRA; UPDATE TDU_primobEncomenda set CDU_cliente = '" + encomenda.cliente.cliente + "',  CDU_valor = '" + encomenda.valorTotal.ToString().Replace(',', '.')  +
                 "', CDU_documento = '" + encomenda.vendedor.documento + "' , CDU_estado = '" + encomenda.estado  + "' where CDU_encomenda = '" + encomenda.encomenda + "'";
             rv = this.bd.ExecuteNonQuery(sql);
             if (rv != false)
@@ -110,7 +103,6 @@ namespace primaveraApi.crud
                     insertItemEncomenda(encomenda.encomenda, artigo);
 
                 }
-                Console.WriteLine("actualizado encomenda sucesso");
             }
 
         }
@@ -120,11 +112,8 @@ namespace primaveraApi.crud
         {
             if (deleteItemEncomenda(encomenda) == true )
             {
-                Console.WriteLine("itens removidos");
-
                 if (deleteEncomenda(encomenda) == true )
                 {
-                    Console.WriteLine("Encomenda removido");
                 }
             }
         }
@@ -132,7 +121,7 @@ namespace primaveraApi.crud
 
 
 
-        void insertEncomenda(Encomenda encomenda)
+        bool insertEncomenda(Encomenda encomenda)
         {
             bool rv = false;
             String sql_encomenda = "use PRIPRITERRA; insert into  TDU_primobEncomenda (CDU_cliente, CDU_vendedor, CDU_valor, CDU_documento, CDU_estado) " +
@@ -147,15 +136,13 @@ namespace primaveraApi.crud
                     insertItemEncomenda(encomenda_id, artigo);
 
                 }
-                Console.WriteLine("inserido encomenda sucesso");
-            } else
-            {
-                Console.WriteLine("inserido encomenda erro");
-
             }
+            
+            return rv;
         }
         bool insertItemEncomenda(String encomenda, Artigo artigo)
         {
+            artigo.info();
             bool rv = false;
             String sql_encomenda = "use PRIPRITERRA; insert into TDU_primobItemEncomenda ( CDU_encomenda, CDU_artigo," +
                         " CDU_valor_unit, CDU_quantidade, CDU_valor_total) " +
@@ -164,10 +151,7 @@ namespace primaveraApi.crud
                          (artigo.quantidade * artigo.preco).ToString().Replace(',', '.') + "') ";
 
             rv = this.bd.ExecuteNonQuery(sql_encomenda);
-            if (rv == true)
-            {
-                Console.WriteLine("inserido item encomenda sucesso");
-            }
+  
             return rv;
         }
 

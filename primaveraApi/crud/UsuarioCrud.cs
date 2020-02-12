@@ -67,10 +67,7 @@ namespace primaveraApi.crud
                          "VALUES ('" + usuario.nome + "', '" + usuario.senha + "', '" + usuario.documento + "', '" + usuario.nivel + "') ";
 
             rv = this.bd.ExecuteNonQuery(sql);
-            if ( rv == true)
-            {
-                Console.WriteLine("inserido sucesso");
-            }
+     
             return rv;
         }
 
