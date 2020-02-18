@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>primaveraApi</RootNamespace>
     <AssemblyName>primaveraApi</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -85,7 +85,7 @@
     <Compile Include="modelo\Artigo.cs" />
     <Compile Include="modelo\Cliente.cs" />
     <Compile Include="modelo\Encomenda.cs" />
-    <Compile Include="modelo\usuario.cs" />
+    <Compile Include="modelo\Usuario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

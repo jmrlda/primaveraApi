@@ -19,7 +19,7 @@ namespace primaveraApi.crud
         public UsuarioCRUD()
         {
             this.bd = new Basedados();
-            sql_select = "use PRIPRITERRA; SELECT " + string.Join(",", colunas) + " FROM TDU_primobUtilizador;";
+            sql_select = "use PRIPRITERRA; SELECT " + string.Join(",", colunas) + " FROM TDU_primobUtilizador where LEN(CDU_nome) > 2 and LEN(CDU_senha) >= 4; ";
         }
 
         public List<Usuario> read()
@@ -60,6 +60,26 @@ namespace primaveraApi.crud
 
         }
 
+        public Usuario readByNome(String utilizador_nome)
+        {
+
+
+            Usuario usuario = null;
+            String sql = "use PRIPRITERRA;";
+            sql += "select  " + string.Join(",", colunas) + " from TDU_primobUtilizador where CDU_nome = '" + utilizador_nome + "'";
+            resultado = this.bd.GetObjecto(sql, colunas.Length);
+            if (resultado.Count > 0)
+            {
+                object[] obj = resultado[0];
+                usuario = new Usuario(obj[0].ToString(), obj[1].ToString(), obj[2].ToString(), obj[3].ToString(), obj[4].ToString());
+            }
+            else
+            {
+                usuario = null;
+            }
+            return usuario;
+
+        }
         public bool create(Usuario usuario)
         {
             bool rv = false ;

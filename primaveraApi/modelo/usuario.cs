@@ -26,6 +26,14 @@ namespace primaveraApi.modelo
             this.nivel = nivel;
         }
 
+        public Usuario(String nome, String senha, String documento, String nivel)
+        {
+            this.usuario = usuario;
+            this.nome = nome;
+            this.senha = senha;
+            this.documento = documento;
+            this.nivel = nivel;
+        }
 
 
         public void info()
