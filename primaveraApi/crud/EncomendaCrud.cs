@@ -51,7 +51,7 @@ namespace primaveraApi.crud
 
         public List<Encomenda> read()
         {
-            resultado = this.bd.GetObjecto(this.sql_select, 22);
+            resultado = this.bd.GetObjecto(this.sql_select, 33);
             //resultado.ForEach();
             Encomenda encomenda = new Encomenda();
             Cliente cliente;
@@ -63,16 +63,26 @@ namespace primaveraApi.crud
                 cliente = new Cliente(obj[1].ToString(), obj[12].ToString(), obj[13].ToString(), obj[14].ToString());
                 
                 encomenda = new Encomenda(obj[0].ToString(), cliente, vendedor, new List<Artigo>() , double.Parse(obj[3].ToString()), obj[4].ToString(), obj[5].ToString());
+                //artigo = new Artigo(obj[15].ToString(), obj[16].ToString(), double.Parse(obj[17].ToString()), obj[19].ToString(), double.Parse(obj[18].ToString()), double.Parse(obj[21].ToString()), double.Parse(obj[21].ToString()),
+                //    double.Parse(obj[18].ToString()), int.Parse(obj[22].ToString()) > 0 ? true : false,
+                //    double.Parse(obj[23].ToString()), int.Parse(obj[24].ToString()) > 0 ? true : false,
+                //    double.Parse(obj[25].ToString()), int.Parse(obj[26].ToString()) > 0 ? true : false,
+                //    double.Parse(obj[27].ToString()), int.Parse(obj[28].ToString()) > 0 ? true : false,
+                //    double.Parse(obj[29].ToString()), int.Parse(obj[30].ToString()) > 0 ? true : false,
+                //    double.Parse(obj[31].ToString()), int.Parse(obj[32].ToString()) > 0 ? true : false
+
+
+                //    );
                 artigo = new Artigo(obj[15].ToString(), obj[16].ToString(), double.Parse(obj[17].ToString()), obj[19].ToString(), double.Parse(obj[18].ToString()), double.Parse(obj[21].ToString()), double.Parse(obj[21].ToString()),
-                    double.Parse(obj[18].ToString()), int.Parse(obj[22].ToString()) > 0 ? true : false,
-                    double.Parse(obj[23].ToString()), int.Parse(obj[24].ToString()) > 0 ? true : false,
-                    double.Parse(obj[25].ToString()), int.Parse(obj[26].ToString()) > 0 ? true : false,
-                    double.Parse(obj[27].ToString()), int.Parse(obj[28].ToString()) > 0 ? true : false,
-                    double.Parse(obj[29].ToString()), int.Parse(obj[30].ToString()) > 0 ? true : false,
-                    double.Parse(obj[31].ToString()), int.Parse(obj[32].ToString()) > 0 ? true : false
+                                   double.Parse(obj[18].ToString()), Boolean.Parse(obj[22].ToString()),
+                                   double.Parse(obj[23].ToString()), Boolean.Parse(obj[24].ToString()),
+                                   double.Parse(obj[25].ToString()), Boolean.Parse(obj[26].ToString()),
+                                   double.Parse(obj[27].ToString()), Boolean.Parse(obj[28].ToString()),
+                                   double.Parse(obj[29].ToString()), Boolean.Parse(obj[30].ToString()),
+                                   double.Parse(obj[31].ToString()), Boolean.Parse(obj[32].ToString())
 
 
-                    );
+                                   );
                 if (!existe_encomenda(encomenda))
                 {
                     encomenda_lista.Add(encomenda);

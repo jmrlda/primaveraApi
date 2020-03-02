@@ -15,16 +15,16 @@ namespace primaveraApi
         static void Main(string[] args)
         {
 
-            ArtigoCRUD artigoCrud = new ArtigoCRUD();
-            artigoCrud.read();
+            //ArtigoCRUD artigoCrud = new ArtigoCRUD();
+            //artigoCrud.read();
             //ClienteCRUD clienteCrud = new ClienteCRUD();
             //UsuarioCRUD usuarioCrud = new UsuarioCRUD();
             //Init.TabelaUtilizador();
             //Init.TabelaEncomenda();
             //Init.TabelaItemEncomenda();
 
-            Usuario usuario = new Usuario("", "guirruta", "12345", "vd1", "vendedor");
-            UsuarioCRUD usuarioCRUD = new UsuarioCRUD();
+            //Usuario usuario = new Usuario("", "guirruta", "12345", "vd1", "vendedor");
+            //UsuarioCRUD usuarioCRUD = new UsuarioCRUD();
             //usuarioCRUD.create(usuario);
             //usuario = usuarioCRUD.login("der", "121212");
             //if (usuario != null)
@@ -47,8 +47,8 @@ namespace primaveraApi
             //    Console.WriteLine("Erro de login");
             //}
 
-           // EncomendaCRUD encomendaCrud = new EncomendaCRUD();
-           // List<Encomenda> lista_encomenda =  encomendaCrud.read();
+            EncomendaCRUD encomendaCrud = new EncomendaCRUD();
+            List<Encomenda> lista_encomenda =  encomendaCrud.read();
            // if (lista_encomenda.Count > 0)
            // {
            //     Encomenda encomenda = lista_encomenda[0];
