@@ -22,7 +22,7 @@ namespace primaveraApi.crud
         public EncomendaCRUD()
         {
             this.bd = new Basedados();
-            sql_select = "use PRIPRITERRA;"; // SELECT " + string.Join(",", colunas) + " FROM TDU_primobEncomenda;";
+            sql_select = " "; // SELECT " + string.Join(",", colunas) + " FROM TDU_primobEncomenda;";
             //sql_select += "select enc.CDU_encomenda, enc.CDU_cliente, enc.CDU_vendedor, enc.CDU_valor,enc.CDU_data_hora, enc.CDU_documento,";
             //sql_select += "enc.CDU_estado, encItem.CDU_artigo,a.descricao, a.stkActual as quantidade, am.pvp1 as preco_unitario,";
             //sql_select += "a.unidadeVenda, mr.descricao as marca";
@@ -103,7 +103,7 @@ namespace primaveraApi.crud
         {
             bool rv = false;
             //CDU_vendedor = '" + encomenda.vendedor.usuario + "',
-            String sql = "use PRIPRITERRA; UPDATE TDU_primobEncomenda set CDU_cliente = '" + encomenda.cliente.cliente + "',  CDU_valor = '" + encomenda.valorTotal.ToString().Replace(',', '.')  +
+            String sql = "UPDATE TDU_primobEncomenda set CDU_cliente = '" + encomenda.cliente.cliente + "',  CDU_valor = '" + encomenda.valorTotal.ToString().Replace(',', '.')  +
                 "', CDU_documento = '" + encomenda.vendedor.documento + "' , CDU_estado = '" + encomenda.estado  + "' where CDU_encomenda = '" + encomenda.encomenda + "'";
             rv = this.bd.ExecuteNonQuery(sql);
             if (rv != false)
@@ -134,7 +134,7 @@ namespace primaveraApi.crud
         bool insertEncomenda(Encomenda encomenda)
         {
             bool rv = false;
-            String sql_encomenda = "use PRIPRITERRA; insert into  TDU_primobEncomenda (CDU_cliente, CDU_vendedor, CDU_valor, CDU_documento, CDU_estado) " +
+            String sql_encomenda = "insert into  TDU_primobEncomenda (CDU_cliente, CDU_vendedor, CDU_valor, CDU_documento, CDU_estado) " +
                          "VALUES ('" + encomenda.cliente.cliente + "', '" + encomenda.vendedor.usuario + "', '" + encomenda.valorTotal.ToString().Replace(',','.') + "', '" + encomenda.vendedor.documento + "', 'pendente') ";
 
             rv = this.bd.ExecuteNonQuery(sql_encomenda);
@@ -154,7 +154,7 @@ namespace primaveraApi.crud
         {
             artigo.info();
             bool rv = false;
-            String sql_encomenda = "use PRIPRITERRA; insert into TDU_primobItemEncomenda ( CDU_encomenda, CDU_artigo," +
+            String sql_encomenda = " insert into TDU_primobItemEncomenda ( CDU_encomenda, CDU_artigo," +
                         " CDU_valor_unit, CDU_quantidade, CDU_valor_total) " +
                          "VALUES ('" + encomenda + "', '" + artigo.artigo + "', '" +
                          artigo.preco.ToString().Replace(',', '.') + "', '" + artigo.quantidade.ToString().Replace(',', '.') + "', '" +
@@ -169,7 +169,7 @@ namespace primaveraApi.crud
         {
 
             bool rv;
-            String sql = "use PRIPRITERRA;";
+            String sql = " ";
             sql += "delete from TDU_primobEncomenda where CDU_encomenda = '" + encomenda.encomenda + "'";
             rv = this.bd.ExecuteNonQuery(sql);
 
@@ -181,7 +181,7 @@ namespace primaveraApi.crud
         {
 
             bool rv;
-            String sql = "use PRIPRITERRA;";
+            String sql =  "";
             sql += "delete from TDU_primobItemEncomenda where CDU_encomenda = '" + encomenda.encomenda + "'";
             rv = this.bd.ExecuteNonQuery(sql);
             return rv;
@@ -226,7 +226,7 @@ namespace primaveraApi.crud
         {
 
             string rv = null;
-            string sql = "use PRIPRITERRA; SELECT TOP(1) CDU_encomenda FROM TDU_primobEncomenda ORDER BY 1 DESC";
+            string sql = " SELECT TOP(1) CDU_encomenda FROM TDU_primobEncomenda ORDER BY 1 DESC";
             resultado = this.bd.GetObjecto(sql, 1);
             if ( resultado.Count > 0)
             {

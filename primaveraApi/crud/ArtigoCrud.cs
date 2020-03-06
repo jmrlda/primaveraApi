@@ -18,7 +18,7 @@ namespace primaveraApi.crud
         public ArtigoCRUD()
         {
              this.bd = new Basedados();
-            sql_select = "use PRIPRITERRA; SELECT " + string.Join(",", colunas) + " FROM Artigo a, ArtigoMoeda am where a.STKActual > 0.0 and a.artigo = am.Artigo and am.Moeda = 'MT';";
+            sql_select = " SELECT " + string.Join(",", colunas) + " FROM Artigo a, ArtigoMoeda am where a.STKActual > 0.0 and a.artigo = am.Artigo and am.Moeda = 'MT';";
         }
 
         public List<Artigo> read()

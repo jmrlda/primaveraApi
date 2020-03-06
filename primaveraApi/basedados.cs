@@ -1,10 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
-using System.Data;
+using System.IO;
 
 namespace primaveraApi
 {
@@ -14,19 +12,30 @@ namespace primaveraApi
 
         public Basedados()
         {
-            builder.DataSource = "jmr-guirruta\\primavera9";   // update me
-            builder.UserID = "sa";              // update me
-            builder.Password = "jmr2013!";      // update me
+            using (StreamReader file = File.OpenText("./config/bd.json"))
+            {
+                string rv = file.ReadToEnd();
+                Config config = JsonConvert.DeserializeObject<Config>(rv);
+
+                Console.WriteLine("file criado");
+                builder.DataSource = config.datasource;
+                builder.UserID = config.usuario;              // update me
+                builder.Password = config.senha;
+                builder.InitialCatalog = config.tabela;// update m
+
+            }
+
+
         }
 
-        public Basedados(String basedados, String usuario, String senha)
+        public Basedados(String datasource, String usuario, String senha)
         {
 
 
                 // Build connection string
-                builder.DataSource = "jmr-guirruta\\primavera9";   // update me
-                builder.UserID = "sa";              // update me
-                builder.Password = "jmr2013!";      // update me
+                builder.DataSource = datasource;   // update me
+                builder.UserID = usuario;              // update me
+                builder.Password = senha;      // update me
           
         }
 
@@ -60,6 +69,9 @@ namespace primaveraApi
             List<object[]> l = new List<object[]>();
             using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
             {
+                try
+                {
+
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
@@ -78,6 +90,12 @@ namespace primaveraApi
                         }
                     }
                 }
+                } catch (SqlException sql_erro)
+                {
+                    Console.WriteLine("Ocorreu um erro");
+                    Console.WriteLine(sql_erro);
+                }
+
                 connection.Close();
 
             }

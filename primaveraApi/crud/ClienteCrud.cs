@@ -19,7 +19,7 @@ namespace primaveraApi.crud
         {
              this.bd = new Basedados();
              colunas = new String[] { "Cliente", "Nome", "NumContrib", "Fac_Mor" };
-            sql_select = "use PRIPRITERRA; SELECT " + string.Join(",", colunas) + " FROM clientes;";
+            sql_select = " SELECT " + string.Join(",", colunas) + " FROM clientes;";
         }
 
         public List<Cliente> read()

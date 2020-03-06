@@ -19,7 +19,7 @@ namespace primaveraApi.crud
         public UsuarioCRUD()
         {
             this.bd = new Basedados();
-            sql_select = "use PRIPRITERRA; SELECT " + string.Join(",", colunas) + " FROM TDU_primobUtilizador where LEN(CDU_nome) > 2 and LEN(CDU_senha) >= 4; ";
+            sql_select = " SELECT " + string.Join(",", colunas) + " FROM TDU_primobUtilizador where LEN(CDU_nome) > 2 and LEN(CDU_senha) >= 4; ";
         }
 
         public List<Usuario> read()
@@ -44,7 +44,7 @@ namespace primaveraApi.crud
 
 
             Usuario usuario = null;
-            String sql = "use PRIPRITERRA;";
+            String sql = " ";
             sql += "select  " + string.Join(",", colunas) + " from TDU_primobUtilizador where CDU_utilizador = '" + utilizador_id + "'";
             resultado = this.bd.GetObjecto(sql, colunas.Length);
             if (resultado.Count > 0)
@@ -65,7 +65,7 @@ namespace primaveraApi.crud
 
 
             Usuario usuario = null;
-            String sql = "use PRIPRITERRA;";
+            String sql = " ";
             sql += "select  " + string.Join(",", colunas) + " from TDU_primobUtilizador where CDU_nome = '" + utilizador_nome + "'";
             resultado = this.bd.GetObjecto(sql, colunas.Length);
             if (resultado.Count > 0)
@@ -83,7 +83,7 @@ namespace primaveraApi.crud
         public bool create(Usuario usuario)
         {
             bool rv = false ;
-            String sql = "use PRIPRITERRA; insert into TDU_primobUtilizador (CDU_nome, CDU_senha, CDU_documento, CDU_perfil) " +
+            String sql = "insert into TDU_primobUtilizador (CDU_nome, CDU_senha, CDU_documento, CDU_perfil) " +
                          "VALUES ('" + usuario.nome + "', '" + usuario.senha + "', '" + usuario.documento + "', '" + usuario.nivel + "') ";
 
             rv = this.bd.ExecuteNonQuery(sql);
@@ -95,7 +95,7 @@ namespace primaveraApi.crud
         public bool update(Usuario usuario)
         {
             bool rv = false;
-            String sql = "use PRIPRITERRA; UPDATE TDU_primobUtilizador set CDU_nome = '" + usuario.nome + "', CDU_senha = '" + usuario.senha + "', CDU_documento = '" + usuario.documento + "', CDU_perfil = '" + usuario.nivel + "' where CDU_utilizador = '" + usuario.usuario + "'";
+            String sql = "UPDATE TDU_primobUtilizador set CDU_nome = '" + usuario.nome + "', CDU_senha = '" + usuario.senha + "', CDU_documento = '" + usuario.documento + "', CDU_perfil = '" + usuario.nivel + "' where CDU_utilizador = '" + usuario.usuario + "'";
             rv = this.bd.ExecuteNonQuery(sql);
             return rv;
         }
@@ -103,7 +103,7 @@ namespace primaveraApi.crud
         public bool delete(Usuario usuario)
         {
             bool rv;
-            String sql = "use PRIPRITERRA;";
+            String sql = " ";
             sql += "delete from TDU_primobUtilizador where CDU_utilizador = '"+ usuario.usuario +"'";
             rv = this.bd.ExecuteNonQuery(sql);
             return rv;
@@ -115,7 +115,7 @@ namespace primaveraApi.crud
 
 
             Usuario usuario = null;
-            String sql = "use PRIPRITERRA;";
+            String sql = " ";
             sql += "select  " + string.Join(",", colunas) + " from TDU_primobUtilizador where CDU_nome = '" + nome +"' and CDU_senha = '"+ senha +"' ";
             resultado = this.bd.GetObjecto(sql, colunas.Length);
             if (resultado.Count > 0)
