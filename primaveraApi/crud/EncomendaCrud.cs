@@ -138,13 +138,15 @@ namespace primaveraApi.crud
                          "VALUES ('" + encomenda.cliente.cliente + "', '" + encomenda.vendedor.usuario + "', '" + encomenda.valorTotal.ToString().Replace(',','.') + "', '" + encomenda.vendedor.documento + "', 'pendente') ";
 
             rv = this.bd.ExecuteNonQuery(sql_encomenda);
+            System.Threading.Thread.Sleep(1000);
+
             if (rv != false)
             {
                 String encomenda_id = ultima_encomenda();
                 foreach (Artigo artigo in encomenda.artigos)
                 {
-                    insertItemEncomenda(encomenda_id, artigo);
-
+                    rv = insertItemEncomenda(encomenda_id, artigo);
+ 
                 }
             }
             

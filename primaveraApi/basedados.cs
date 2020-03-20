@@ -17,7 +17,6 @@ namespace primaveraApi
                 string rv = file.ReadToEnd();
                 Config config = JsonConvert.DeserializeObject<Config>(rv);
 
-                Console.WriteLine("file criado");
                 builder.DataSource = config.datasource;
                 builder.UserID = config.usuario;              // update me
                 builder.Password = config.senha;
