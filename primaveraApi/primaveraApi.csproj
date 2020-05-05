@@ -83,11 +83,13 @@
     <Compile Include="crud\UsuarioCrud.cs" />
     <Compile Include="crud\ClienteCrud.cs" />
     <Compile Include="crud\ArtigoCrud.cs" />
+    <Compile Include="crud\VendedorCrud.cs" />
     <Compile Include="load\Init.cs" />
     <Compile Include="modelo\Artigo.cs" />
     <Compile Include="modelo\Cliente.cs" />
     <Compile Include="modelo\Encomenda.cs" />
     <Compile Include="modelo\Usuario.cs" />
+    <Compile Include="modelo\Vendedor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

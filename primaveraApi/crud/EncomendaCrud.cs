@@ -59,7 +59,7 @@ namespace primaveraApi.crud
             Artigo artigo;
             foreach (object[] obj in resultado)
             {
-                vendedor = new Usuario(obj[2].ToString(), obj[8].ToString(), obj[9].ToString(), obj[10].ToString(), obj[11].ToString());
+                vendedor = new Usuario(obj[2].ToString(), obj[8].ToString(), obj[9].ToString(), obj[10].ToString(), obj[11].ToString(), null);
                 cliente = new Cliente(obj[1].ToString(), obj[12].ToString(), obj[13].ToString(), obj[14].ToString());
                 
                 encomenda = new Encomenda(obj[0].ToString(), cliente, vendedor, new List<Artigo>() , double.Parse(obj[3].ToString()), obj[4].ToString(), obj[5].ToString());
@@ -138,13 +138,17 @@ namespace primaveraApi.crud
                          "VALUES ('" + encomenda.cliente.cliente + "', '" + encomenda.vendedor.usuario + "', '" + encomenda.valorTotal.ToString().Replace(',','.') + "', '" + encomenda.vendedor.documento + "', 'pendente') ";
 
             rv = this.bd.ExecuteNonQuery(sql_encomenda);
-            System.Threading.Thread.Sleep(1000);
+            //System.Threading.Thread.Sleep(1000);
 
             if (rv != false)
             {
                 String encomenda_id = ultima_encomenda();
                 foreach (Artigo artigo in encomenda.artigos)
                 {
+                    Console.Write("encomenda item ");
+                    Console.WriteLine(encomenda_id);
+
+                    Console.WriteLine(artigo);
                     rv = insertItemEncomenda(encomenda_id, artigo);
  
                 }

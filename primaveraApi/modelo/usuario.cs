@@ -1,5 +1,6 @@
 ﻿using System;
 
+using primaveraApi.modelo;
 
 namespace primaveraApi.modelo
 {
@@ -11,28 +12,32 @@ namespace primaveraApi.modelo
         public String senha { get; set; }
         public String documento { get; set; }
         public String nivel { get; set; }
+        public Vendedor vendedor { get; set; }
 
         public Usuario()
         {
 
         }
 
-        public Usuario(String usuario, String nome, String senha, String documento, String nivel)
+        public Usuario(String usuario, String nome, String senha, String documento, String nivel, Vendedor vendedor)
         {
             this.usuario = usuario;
             this.nome = nome;
             this.senha = senha;
             this.documento = documento;
             this.nivel = nivel;
+            this.vendedor = vendedor;
         }
 
-        public Usuario(String nome, String senha, String documento, String nivel)
+        public Usuario(String nome, String senha, String documento, String nivel, Vendedor vendedor)
         {
             this.usuario = usuario;
             this.nome = nome;
             this.senha = senha;
             this.documento = documento;
             this.nivel = nivel;
+            this.vendedor = vendedor;
+
         }
 
 
@@ -42,7 +47,7 @@ namespace primaveraApi.modelo
             Console.WriteLine("nome: " + this.nome);
             Console.WriteLine("documento: " + this.documento);
             Console.WriteLine("nivel: " + this.nivel);
-
+            vendedor.info();
         }
 
     }
