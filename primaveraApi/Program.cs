@@ -20,9 +20,9 @@ namespace primaveraApi
             //ClienteCRUD clienteCrud = new ClienteCRUD();
             //UsuarioCRUD usuarioCrud = new UsuarioCRUD();
 
-            Init.TabelaUtilizador();
+            //Init.TabelaUtilizador();
             //Init.TabelaEncomenda();
-            //Init.TabelaItemEncomenda();
+            //  Init.TabelaItemEncomenda();
 
 
 
@@ -44,6 +44,9 @@ namespace primaveraApi
 
             //Usuario usuario = null; // new Usuario("", "dercio.guirruta", "12345", "vd1", "vendedor", lista[1]);
             //UsuarioCRUD usuarioCRUD = new UsuarioCRUD();
+            //List<Usuario> lista_usuario;
+            //lista_usuario = usuarioCRUD.read();
+
             //usuarioCRUD.create(usuario);
             //usuario = usuarioCRUD.login("dercio.guirruta", "12345");
             //if (usuario != null)
@@ -59,7 +62,7 @@ namespace primaveraApi
             //}
 
             //EncomendaCRUD encomendaCrud = new EncomendaCRUD();
-            //List<Encomenda> lista_encomenda =  encomendaCrud.read();
+            //List<Encomenda> lista_encomenda = encomendaCrud.read();
             // if (lista_encomenda.Count > 0)
             // {
             //     Encomenda encomenda = lista_encomenda[0];

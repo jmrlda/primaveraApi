@@ -12,13 +12,13 @@ namespace primaveraApi.modelo
         public double valorTotal { get; set; }
         public String estado { get; set; }
         public String dataHora { get; set; }
-
+        public String encomenda_id { get; set; }
         public Encomenda()
         {
 
         }
 
-        public Encomenda( String encomenda, Cliente cliente, Usuario vendedor, List<Artigo> artigos, double valorTotal, String estado, String dataHora )
+        public Encomenda( String encomenda, Cliente cliente, Usuario vendedor, List<Artigo> artigos, double valorTotal, String estado, String dataHora, String encomenda_id )
         {
             this.encomenda = encomenda;
             this.cliente = cliente;
@@ -27,6 +27,7 @@ namespace primaveraApi.modelo
             this.valorTotal = valorTotal;
             this.estado = estado;
             this.dataHora = dataHora;
+            this.encomenda_id = encomenda_id;
         }
 
 

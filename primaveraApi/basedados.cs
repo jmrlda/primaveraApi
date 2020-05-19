@@ -124,7 +124,11 @@ namespace primaveraApi
             } catch (SqlException e)
             {
                 Console.Error.WriteLine("[ExecuteNonQuery] Erro:");
+                Console.Error.WriteLine("[ExecuteNonQuery] SQL: " + sql);
+
                 Console.Error.WriteLine(e.Message);
+                Console.Error.WriteLine(e);
+
                 rv = false;
             }
 

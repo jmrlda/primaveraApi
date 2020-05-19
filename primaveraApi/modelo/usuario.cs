@@ -13,13 +13,14 @@ namespace primaveraApi.modelo
         public String documento { get; set; }
         public String nivel { get; set; }
         public Vendedor vendedor { get; set; }
+        public Boolean sincronizado { get; set; }
 
         public Usuario()
         {
 
         }
 
-        public Usuario(String usuario, String nome, String senha, String documento, String nivel, Vendedor vendedor)
+        public Usuario(String usuario, String nome, String senha, String documento, String nivel, Vendedor vendedor, Boolean sincronizado)
         {
             this.usuario = usuario;
             this.nome = nome;
@@ -27,9 +28,10 @@ namespace primaveraApi.modelo
             this.documento = documento;
             this.nivel = nivel;
             this.vendedor = vendedor;
+            this.sincronizado = sincronizado;
         }
 
-        public Usuario(String nome, String senha, String documento, String nivel, Vendedor vendedor)
+        public Usuario(String nome, String senha, String documento, String nivel, Vendedor vendedor, Boolean sincronizado)
         {
             this.usuario = usuario;
             this.nome = nome;
@@ -37,8 +39,11 @@ namespace primaveraApi.modelo
             this.documento = documento;
             this.nivel = nivel;
             this.vendedor = vendedor;
+            this.sincronizado = sincronizado;
 
         }
+
+
 
 
         public void info()

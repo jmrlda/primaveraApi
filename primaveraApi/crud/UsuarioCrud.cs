@@ -10,7 +10,7 @@ namespace primaveraApi.crud
     {
         Basedados bd;
 
-        String[] colunas = new String[] { "CDU_utilizador", "CDU_nome", "CDU_senha", "CDU_documento", "CDU_perfil", "Vendedor", "Nome", "Telefone", "Morada" };
+        String[] colunas = new String[] { "CDU_utilizador", "CDU_nome", "CDU_senha", "CDU_documento", "CDU_perfil", "Vendedor", "Nome", "Telefone", "Morada", "CDU_sincronizado" };
         List<object[]> resultado = new List<object[]>();
         Usuario usuario = new Usuario();
         Vendedor vendedor = new Vendedor();
@@ -20,20 +20,25 @@ namespace primaveraApi.crud
         public UsuarioCRUD()
         {
             this.bd = new Basedados();
-            sql_select = " SELECT " + string.Join(",", colunas) + " FROM TDU_primobUtilizador as user, Vendedores as vend where LEN(CDU_nome) > 2 and LEN(CDU_senha) >= 4 and user.CDU_vendedor = vend.vendedor; ";
+            sql_select = " SELECT " + string.Join(",", colunas) + " FROM TDU_primobUtilizador as user, Vendedores as vend where  user.CDU_vendedor = vend.vendedor; ";
         }
 
         public List<Usuario> read()
         {
             List<Usuario> usuario_lista = new List<Usuario>();
+            sql_select = " select  CDU_utilizador,CDU_nome,CDU_senha,CDU_documento,CDU_perfil,Vendedor,Nome,Telefone,Morada, CDU_sincronizado from TDU_primobUtilizador, Vendedores as vend where  CDU_vendedor = vend.vendedor;";
+
             resultado = this.bd.GetObjecto(this.sql_select, colunas.Length);
             //resultado.ForEach();
 
 
             foreach (object[] obj in resultado)
             {
+
+                Boolean val = obj[9].ToString() == "True" ? true : false;
+
                 vendedor = new Vendedor(obj[5].ToString(), obj[6].ToString(), obj[7].ToString());
-                usuario = new Usuario(obj[0].ToString(), obj[1].ToString(), obj[2].ToString(), obj[3].ToString(), obj[4].ToString(), vendedor);
+                usuario = new Usuario(obj[0].ToString(), obj[1].ToString(), obj[2].ToString(), obj[3].ToString(), obj[4].ToString(), vendedor, val);
                 usuario_lista.Add(usuario);
             }
 
@@ -51,9 +56,12 @@ namespace primaveraApi.crud
             resultado = this.bd.GetObjecto(sql, colunas.Length);
             if (resultado.Count > 0)
             {
+
                 object[] obj = resultado[0];
+                Boolean val = obj[9].ToString() == "True" ? true : false;
+
                 vendedor = new Vendedor(obj[5].ToString(), obj[6].ToString(), obj[7].ToString());
-                usuario = new Usuario(obj[0].ToString(), obj[1].ToString(), obj[2].ToString(), obj[3].ToString(), obj[4].ToString(), vendedor);
+                usuario = new Usuario(obj[0].ToString(), obj[1].ToString(), obj[2].ToString(), obj[3].ToString(), obj[4].ToString(), vendedor, val);
             }
             else
             {
@@ -74,8 +82,9 @@ namespace primaveraApi.crud
             if (resultado.Count > 0)
             {
                 object[] obj = resultado[0];
+                Boolean val = obj[9].ToString() == "True" ? true : false;
                 vendedor = new Vendedor(obj[5].ToString(), obj[6].ToString(), obj[7].ToString());
-                usuario = new Usuario(obj[0].ToString(), obj[1].ToString(), obj[2].ToString(), obj[3].ToString(), obj[4].ToString(), vendedor);
+                usuario = new Usuario(obj[0].ToString(), obj[1].ToString(), obj[2].ToString(), obj[3].ToString(), obj[4].ToString(), vendedor, val );
             }
             else
             {
@@ -87,8 +96,20 @@ namespace primaveraApi.crud
         public bool create(Usuario usuario)
         {
             bool rv = false ;
-            String sql = "insert into TDU_primobUtilizador (CDU_nome, CDU_senha, CDU_documento, CDU_perfil, CDU_vendedor) " +
-                         "VALUES ('" + usuario.nome + "', '" + usuario.senha + "', '" + usuario.documento + "', '" + usuario.nivel + "', '" + usuario.vendedor.vendedor + "') ";
+            String vendedor;
+            if (usuario.vendedor != null )
+            {
+                vendedor = usuario.vendedor.vendedor;
+
+            } else
+            {
+                vendedor = null;
+            }
+
+            Console.WriteLine("vendedor");
+            Console.WriteLine(vendedor);
+            String sql = "insert into TDU_primobUtilizador (CDU_nome, CDU_senha, CDU_documento, CDU_perfil, CDU_vendedor, CDU_sincronizado) " +
+                         "VALUES ('" + usuario.nome + "', '" + usuario.senha + "', '" + usuario.documento + "', '" + usuario.nivel + "', '" + vendedor + "', '" + usuario.sincronizado + "' ) ";
 
 
             rv = this.bd.ExecuteNonQuery(sql);
@@ -100,7 +121,7 @@ namespace primaveraApi.crud
         public bool update(Usuario usuario)
         {
             bool rv = false;
-            String sql = "UPDATE TDU_primobUtilizador set CDU_nome = '" + usuario.nome + "', CDU_senha = '" + usuario.senha + "', CDU_documento = '" + usuario.documento + "', CDU_perfil = '" + usuario.nivel +     "' where CDU_utilizador = '" + usuario.usuario + "' ";
+            String sql = "UPDATE TDU_primobUtilizador set CDU_nome = '" + usuario.nome + "', CDU_senha = '" + usuario.senha + "', CDU_documento = '" + usuario.documento + "', CDU_perfil = '" + usuario.nivel + "', CDU_sincronizado = '" + usuario.sincronizado + "' where CDU_utilizador = '" + usuario.usuario + "'  ";
             rv = this.bd.ExecuteNonQuery(sql);
             return rv;
         }
@@ -126,8 +147,9 @@ namespace primaveraApi.crud
             if (resultado.Count > 0)
             {
                 object[] obj = resultado[0];
+                Boolean val = obj[9].ToString() == "True" ? true : false;
                 vendedor = new Vendedor(obj[5].ToString(), obj[6].ToString(), obj[7].ToString());
-                usuario = new Usuario(obj[0].ToString(), obj[1].ToString(), obj[2].ToString(), obj[3].ToString(), obj[4].ToString(), vendedor);
+                usuario = new Usuario(obj[0].ToString(), obj[1].ToString(), obj[2].ToString(), obj[3].ToString(), obj[4].ToString(), vendedor,  val);
             } else
             {
                 usuario = null;

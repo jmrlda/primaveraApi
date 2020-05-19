@@ -18,7 +18,7 @@ namespace primaveraApi.crud
         public ClienteCRUD()
         {
              this.bd = new Basedados();
-             colunas = new String[] { "Cliente", "Nome", "NumContrib", "Fac_Mor" };
+             colunas = new String[] { "Cliente", "Nome", "NumContrib", "Fac_Mor",  "ClienteAnulado", "TipoCred", "TotalDeb", "EncomendasPendentes", "VendasNaoConvertidas" };
             sql_select = " SELECT " + string.Join(",", colunas) + " FROM clientes;";
         }
 
@@ -32,7 +32,9 @@ namespace primaveraApi.crud
 
             foreach(object[] obj in resultado)
             {
-                cliente = new Cliente(obj[0].ToString(), obj[1].ToString(), obj[2].ToString(), obj[3].ToString());
+               // cliente = new Cliente(obj[0].ToString(), obj[1].ToString(), obj[2].ToString(), obj[3].ToString());
+                cliente = new Cliente(obj[0].ToString(), obj[1].ToString(), obj[2].ToString(), obj[3].ToString(), Boolean.Parse(obj[4].ToString()), int.Parse(obj[5].ToString()),  Double.Parse(obj[6].ToString()), Double.Parse(obj[7].ToString()),Double.Parse(obj[8].ToString()));
+
                 cliente_lista.Add(cliente);
             }
             

@@ -60,5 +60,27 @@ namespace primaveraApi.crud
             return vendedor;
         }
 
+        public List<Vendedor> getTodosNaoRegistado()
+        {
+
+            sql_select = " SELECT " + string.Join(",", colunas) + " FROM Vendedores vend left join TDU_primobUtilizador usr  on vend.Vendedor = usr.CDU_vendedor where usr.CDU_vendedor is null";
+
+            List<Vendedor> vendedor_lista = new List<Vendedor>();
+            resultado = this.bd.GetObjecto(this.sql_select, colunas.Length);
+            //resultado.ForEach();
+
+
+            foreach (object[] obj in resultado)
+            {
+                vendedor = new Vendedor(obj[0].ToString(), obj[1].ToString(), obj[2].ToString());
+                vendedor_lista.Add(vendedor);
+            }
+
+
+
+            return vendedor_lista;
+        }
+
+
     }
 }
