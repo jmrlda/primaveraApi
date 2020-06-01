@@ -15,7 +15,7 @@ namespace primaveraApi.modelo
         public Double totalDeb { get; set; }
         public Double encomendaPendente { get; set; }
         public Double vendaNaoConvertida { get; set; }
-
+        public Double limiteCredito { get; set; }
 
         public Cliente()
         {
@@ -30,7 +30,7 @@ namespace primaveraApi.modelo
             this.endereco = endereco;
 
         }
-        public Cliente(String cliente, String nome, String numContrib, String endereco, Boolean anulado, int tipoCred, Double totalDeb, Double encomendaPendente, Double vendaNaoConvertida)
+        public Cliente(String cliente, String nome, String numContrib, String endereco, Boolean anulado, int tipoCred, Double totalDeb, Double encomendaPendente, Double vendaNaoConvertida, Double limiteCred)
         {
             this.cliente = cliente;
             this.nome = nome;
@@ -41,6 +41,7 @@ namespace primaveraApi.modelo
             this.totalDeb = totalDeb;
             this.encomendaPendente = encomendaPendente;
             this.vendaNaoConvertida = vendaNaoConvertida;
+            this.limiteCredito = limiteCred;
 
 
         }
@@ -57,6 +58,7 @@ namespace primaveraApi.modelo
             Console.WriteLine("total deb: " + this.totalDeb);
             Console.WriteLine("encomenda pendente: " + this.encomendaPendente);
             Console.WriteLine("vendas nao convertidas: " + this.vendaNaoConvertida);
+            Console.WriteLine("limiteCredito: " + this.limiteCredito);
 
         }
 
