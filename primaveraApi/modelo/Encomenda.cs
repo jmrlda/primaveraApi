@@ -13,6 +13,10 @@ namespace primaveraApi.modelo
         public String estado { get; set; }
         public String dataHora { get; set; }
         public String encomenda_id { get; set; }
+        public String latitude { get; set; }
+        public String longitude { get; set; }
+        public String assinaturaImagemBuffer { get; set; }
+
         public Encomenda()
         {
 
@@ -28,9 +32,24 @@ namespace primaveraApi.modelo
             this.estado = estado;
             this.dataHora = dataHora;
             this.encomenda_id = encomenda_id;
+
         }
 
 
+        public Encomenda(String encomenda, Cliente cliente, Usuario vendedor, List<Artigo> artigos, double valorTotal, String estado, String dataHora, String encomenda_id, String latitude, String longitude, String assinaturaImagemBuffer)
+        {
+            this.encomenda = encomenda;
+            this.cliente = cliente;
+            this.vendedor = vendedor;
+            this.artigos = artigos;
+            this.valorTotal = valorTotal;
+            this.estado = estado;
+            this.dataHora = dataHora;
+            this.encomenda_id = encomenda_id;
+            this.latitude = latitude;
+            this.longitude = longitude;
+            this.assinaturaImagemBuffer = assinaturaImagemBuffer;
 
+        }
     }
 }

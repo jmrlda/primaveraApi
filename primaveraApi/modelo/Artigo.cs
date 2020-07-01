@@ -25,7 +25,7 @@ namespace primaveraApi.modelo
         public bool pvp5Iva { get; set; }
         public double pvp6 { get; set; }
         public bool pvp6Iva { get; set; }
-
+        public String imagemBuffer { get; set;  }
 
         public Artigo()
         {
@@ -58,6 +58,32 @@ namespace primaveraApi.modelo
 
         }
 
+        public Artigo(String artigo, String descricao, double quantidade, String unidade, double preco, double civa, double iva,
+        double pvp1, bool pvp1Iva, double pvp2, bool pvp2Iva, double pvp3, bool pvp3Iva, double pvp4, bool pvp4Iva, double pvp5,
+        bool pvp5Iva, double pvp6, bool pvp6Iva, String imagemBuffer)
+        {
+            this.artigo = artigo;
+            this.descricao = descricao;
+            this.quantidade = quantidade;
+            this.unidade = unidade;
+            this.preco = preco;
+            this.civa = civa;
+            this.iva = iva;
+            this.pvp1 = pvp1;
+            this.pvp1Iva = pvp1Iva;
+            this.pvp2 = pvp2;
+            this.pvp2Iva = pvp2Iva;
+            this.pvp3 = pvp3;
+            this.pvp3Iva = pvp3Iva;
+            this.pvp4 = pvp4;
+            this.pvp4Iva = pvp4Iva;
+            this.pvp5 = pvp5;
+            this.pvp5Iva = pvp5Iva;
+            this.pvp6 = pvp6;
+            this.pvp6Iva = pvp6Iva;
+            this.imagemBuffer = imagemBuffer;
+
+        }
         public void info()
         {
             Console.WriteLine("artigo: " + this.artigo);

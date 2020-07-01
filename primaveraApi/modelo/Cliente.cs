@@ -16,6 +16,7 @@ namespace primaveraApi.modelo
         public Double encomendaPendente { get; set; }
         public Double vendaNaoConvertida { get; set; }
         public Double limiteCredito { get; set; }
+        public String imagemBuffer { get; set; }
 
         public Cliente()
         {
@@ -45,7 +46,22 @@ namespace primaveraApi.modelo
 
 
         }
+        public Cliente(String cliente, String nome, String numContrib, String endereco, Boolean anulado, int tipoCred, Double totalDeb, Double encomendaPendente, Double vendaNaoConvertida, Double limiteCred, String imagemBuffer)
+        {
+            this.cliente = cliente;
+            this.nome = nome;
+            this.numContrib = numContrib;
+            this.endereco = endereco;
+            this.anulado = anulado;
+            this.tipoCred = tipoCred;
+            this.totalDeb = totalDeb;
+            this.encomendaPendente = encomendaPendente;
+            this.vendaNaoConvertida = vendaNaoConvertida;
+            this.limiteCredito = limiteCred;
+            this.imagemBuffer = imagemBuffer;
 
+
+        }
 
         public void info()
         {

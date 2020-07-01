@@ -16,7 +16,9 @@ namespace primaveraApi
         {
 
             //ArtigoCRUD artigoCrud = new ArtigoCRUD();
-            //artigoCrud.read();
+            //Artigo artigo = artigoCrud.readById("0025g5");
+            //Console.WriteLine(artigo);
+
             //ClienteCRUD clienteCrud = new ClienteCRUD();
             //UsuarioCRUD usuarioCrud = new UsuarioCRUD();
 
@@ -59,27 +61,26 @@ namespace primaveraApi
             //else
             //{
             //    Console.WriteLine("Erro de login");
+            ////}
+
+            //EncomendaCRUD encomendaCrud = new EncomendaCRUD();
+            //List<Encomenda> lista_encomenda = encomendaCrud.read();
+
+            ////List<Encomenda> lista_encomenda = encomendaCrud.read();
+            //if (lista_encomenda.Count > 0)
+            //{
+            //    Encomenda encomenda = lista_encomenda[0];
+            //    Console.WriteLine("encomenda");
+            //    Console.WriteLine(encomenda);
+
+
+
+            //     encomendaCrud.delete(encomenda);
             //}
 
-            EncomendaCRUD encomendaCrud = new EncomendaCRUD();
-            List<Encomenda> lista_encomenda = encomendaCrud.readByVendedor("JR");
-
-            //List<Encomenda> lista_encomenda = encomendaCrud.read();
-            if (lista_encomenda.Count > 0)
-            {
-                Encomenda encomenda = lista_encomenda[0];
-                Console.WriteLine("encomenda");
-                Console.WriteLine(encomenda);
 
 
-
-                //     encomendaCrud.delete(encomenda);
-            }
-            Console.ReadKey(true);
-
-
-
-
+            //Console.ReadKey();
         }
     }
 }

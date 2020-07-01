@@ -33,7 +33,7 @@ namespace primaveraApi.load
         {
             String sql = "use PRIPRITERRA;   create table dbo.TDU_primobEncomenda ( CDU_encomenda uniqueidentifier default (newId()) primary key not null ," +
                         "CDU_cliente nvarchar(12), CDU_vendedor nvarchar(3)," +
-                        "CDU_data_hora  Datetime default ( GETUTCDATE()), CDU_valor float, CDU_documento nvarchar(16), CDU_estado nvarchar(16),  CDU_encomenda_id nvarchar(32), " +
+                        "CDU_data_hora  Datetime default ( GETUTCDATE()), CDU_valor float, CDU_documento nvarchar(16), CDU_estado nvarchar(16),  CDU_encomenda_id nvarchar(32), CDU_assinaturaImagemBuffer text, CDU_latitude nvarchar(64), CDU_longitude nvarchar(64) " +
                         "foreign key(CDU_cliente) references Clientes(Cliente)," +
                         "foreign key(CDU_vendedor) references  Vendedores(vendedor))";
             Basedados bd = new Basedados();
